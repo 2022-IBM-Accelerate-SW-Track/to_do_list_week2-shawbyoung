@@ -1,29 +1,22 @@
 import React from "react";
 import "../component/todos.css";
-import Home from "../pages/Home";
-import { Card, Checkbox, Grid, ListItemButton, ListItemText } from "@mui/material";
+import deleteTodo from "../pages/Home.js";
 
-// 1. This component formats and returns the list of todos.
-// 2. Treat the question mark like an if statement.
-// If the todos array has items in the list [todos.length], we want to return the list
-// Else, return a message saying "You have no todo's left"
-// 3. The map function is called to assign each array item with a key
-// 4. Think of lines 14-23 as a loop. For each todo in the todo list, we want to give the list item
-// a key, and it's own card shown in the UI
-const Todos = ({ todos }) => {
+import { Card, Checkbox, Grid, ListItemButton, ListItemText } from "@mui/material";
+// import Home from "../pages/Home.js";
+
+const Todos = ({ todos, deleteTodo }) => { 
   const todoList = todos.length ? (
     todos.map((todo) => {
       return (
         <Grid key={todo.id}>
           <Card>
-            {/* Remember, we set the local state of this todo item when the user submits the form in 
-            AddTodo.js. All we need to do is return the todo list item {todo.content} */}
             <ListItemButton component="a" href="#simple-list">
-              {/* <Checkbox 
-              onClick={() => Home.deleteTodo(todo.id)}
-              color="primary"
 
-              ></Checkbox> */}
+              <Checkbox 
+              onClick={() => deleteTodo(todo.id)}
+              color="primary"
+              ></Checkbox>
               
               <ListItemText 
               primary={todo.content}
